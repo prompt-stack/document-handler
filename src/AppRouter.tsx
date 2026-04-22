@@ -1,6 +1,7 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Login from "./screens/pages/auth/login";
 import { useState } from "react";
+import AppLayout from "./screens/pages/layout/app-layout";
 
 function ProtectedRoute({ isLoggedIn }: { isLoggedIn?: boolean }) {
     if (!isLoggedIn) {
@@ -22,14 +23,16 @@ export default function AppRouter() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <Routes>
-      {/* Public route */}
-      <Route path="/login" element={<Login />} />
+         <Route element={<AppLayout isLoggedIn={isLoggedIn} /> }>
+            {/* Public route */}
+            <Route path="/login" element={<Login />} />
 
-      {/* Protected routes */}
-      <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
-        <Route path="/" element={<Home />} />
-        {/* add more protected routes here */}
-      </Route>
+            {/* Protected routes */}
+            <Route element={<ProtectedRoute isLoggedIn={isLoggedIn} />}>
+                <Route path="/" element={<Home />} />
+                {/* add more protected routes here */}
+            </Route>
+         </Route>
     </Routes>
   );
 }
