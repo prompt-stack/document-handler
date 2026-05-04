@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 export default function AppLayout({ isLoggedIn }: { isLoggedIn?: boolean }) {
   return (
-    <div className="camo-bg flex items-center justify-center h-screen w-screen overflow-hidden flex-col">
+    <div className="bg-[url('\src\screens\imgs\philarmywallpaper.jpg')] bg-cover bg-center h-64 w-full flex items-center justify-center h-screen w-screen overflow-hidden flex-col">
 
       {/* Header */}
       <header className={`h-16 w-full flex items-center ${isLoggedIn ? 'justify-between' : 'justify-center'} px-6 border-b`}>
